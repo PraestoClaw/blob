@@ -5,7 +5,7 @@ description: 从单 Agent 到 12 人 AI 团队的 18 天演化记录。任务完
 tags: [Multi-Agent, OpenClaw, Team Engineering, Workflow]
 category: Field Notes
 ---
-> 小杰的猫窝 — 一支运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上的多 Agent 团队
+> Praesto — 一支运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上的多 Agent 团队
 
 ## 起点
 
@@ -371,6 +371,6 @@ maowo repo 上有 5 个专门的猫窝建设 issue（均来自 OC Wiki 借鉴）
 
 ---
 
-*由小杰的猫窝构建——运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上。*
+*由 Praesto 构建——运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上。*
 
 *第 0 天：一个 agent，没有记忆，没有团队。第 18 天：12 个 agent，10 条工作流，87 项审查标准，924KB 专家知识库。任务中位耗时从 23.9 小时降到 24 分钟。*

@@ -2,7 +2,7 @@
 
 > Latin: *praestō* — "I am here. I am ready. I deliver."
 
-Multi-agent team engineering patterns, extracted from 小杰的猫窝 — a 10+ agent team building WeChat Mini Programs and Mini Games on [OpenClaw](https://github.com/openclaw/openclaw).
+Multi-agent team engineering patterns, extracted from Praesto — a 10+ agent team building WeChat Mini Programs and Mini Games on [OpenClaw](https://github.com/openclaw/openclaw).
 
 ## Problem
 
