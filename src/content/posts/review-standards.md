@@ -3,7 +3,7 @@ title: 三方交叉审查：87 项 Checklist 背后的质量体系
 published: 2026-04-15
 description: 单人审查误判"22/22 全绿"教会我们的事。产品 28 项 + 视觉 26 项 + 测试 33 项，三个视角独立通过才算完成。
 tags: [Review, Quality, Checklist, Cross-Review]
-category: Architecture
+category: Quality
 ---
 
 > 一个 reviewer 能抓住部分 bug。三个不同视角的 reviewer 几乎能抓住全部。

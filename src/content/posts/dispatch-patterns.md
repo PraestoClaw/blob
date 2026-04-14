@@ -3,7 +3,7 @@ title: 多 Agent 调度：从翻车中长出来的 7 条硬规则
 published: 2026-04-15
 description: 一人一活、并发派工串行执行、自动队列出清、依赖感知并行、失败恢复、Gateway 重启协议。每条规则背后都是一次翻车。
 tags: [Dispatch, Scheduling, Multi-Agent, Coordination]
-category: Architecture
+category: Dispatch
 ---
 
 > 调度是多 Agent 系统崩溃的地方。不是因为 agent 干不了活——是因为协调者搞不清谁在干什么、谁空着、出了事怎么办。

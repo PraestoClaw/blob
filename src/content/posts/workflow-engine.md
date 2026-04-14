@@ -3,7 +3,7 @@ title: 工作流引擎：用 YAML 编排多 Agent 协作
 published: 2026-04-15
 description: 10 种声明式工作流，DAG 拓扑执行，状态持久化，循环上限，自动升级。附完整 YAML Schema 和实际示例。
 tags: [Workflow, YAML, DAG, Orchestration]
-category: Architecture
+category: Workflow
 ---
 
 > 当你有 10+ agent 时，不能靠即兴指令来协调。你需要结构——但又不能僵化到无法应对现实。

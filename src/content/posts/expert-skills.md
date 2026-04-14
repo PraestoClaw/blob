@@ -3,7 +3,7 @@ title: 领域专家 Skill 体系：让 Agent 从通才变专家
 published: 2026-04-15
 description: 8 套专家 skill 模板，78 个参考文件，924KB 结构化知识库。每个 agent 绑定 2-3 个权威知识源的深度方法论。
 tags: [Skills, Knowledge Base, Agent Design, Expert System]
-category: Architecture
+category: Skills
 ---
 
 > 给 agent 一个"你是架构师"的提示词，它输出泛泛的架构。给它加载 Martin Fowler + Uncle Bob + Google SWE Book 的知识库，它输出**具体的、有依据的**架构决策。
