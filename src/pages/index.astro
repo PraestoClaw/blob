@@ -101,9 +101,6 @@ const interval = 50;
 const STATS_API = "https://praesto-stats.ou-gaochang.workers.dev";
 
 // 加载全站统计
-// 记录页面访问
-fetch(STATS_API + "/pageview", { method: "POST" }).catch(() => {});
-
 // 加载全站统计
 fetch(STATS_API + "/site-stats")
   .then(r => r.json())

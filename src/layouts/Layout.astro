@@ -156,7 +156,15 @@ const bannerOffset =
 
 		<!-- increase the page height during page transition to prevent the scrolling animation from jumping -->
 		<div id="page-height-extend" class="hidden h-[300vh]"></div>
-	</body>
+	
+<!-- Global pageview tracking -->
+<script>
+(function() {
+  var api = "https://praesto-stats.ou-gaochang.workers.dev";
+  fetch(api + "/pageview", { method: "POST" }).catch(function(){});
+})();
+</script>
+</body>
 </html>
 
 <style is:global define:vars={{
