@@ -31,8 +31,8 @@ allPosts.forEach((post: any) => {
 
 // 固定顺序
 const tabs = [
-  { id: "methodology", ...tabGroups["方法论"] || { label: "方法论", icon: "🔥", posts: [] } },
   { id: "practice", ...tabGroups["实战笔记"] || { label: "实战笔记", icon: "📝", posts: [] } },
+  { id: "methodology", ...tabGroups["方法论"] || { label: "方法论", icon: "🔥", posts: [] } },
   { id: "engineering", ...tabGroups["工程体系"] || { label: "工程体系", icon: "⚙️", posts: [] } },
   { id: "reusable", ...tabGroups["工作流与技能"] || { label: "工作流与技能", icon: "🎓", posts: [] } },
 ];
@@ -182,9 +182,19 @@ function initTabs() {
       contents.forEach(c => {
         c.classList.toggle('hidden', c.getAttribute('data-content') !== target);
       });
+      history.replaceState(null, '', '#' + target);
     });
   });
 }
-document.addEventListener('DOMContentLoaded', () => { initTabs(); loadPostStats(); });
+document.addEventListener('DOMContentLoaded', () => { 
+  initTabs(); 
+  loadPostStats();
+  // 读取 URL hash 切换 tab
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const tab = document.querySelector('.pivot-tab[data-tab="' + hash + '"]');
+    if (tab) tab.click();
+  }
+});
 document.addEventListener('swup:page:view', () => { initTabs(); loadPostStats(); });
 </script>
