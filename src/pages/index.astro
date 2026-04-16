@@ -151,6 +151,25 @@ function loadPostStats() {
       .catch(() => {});
   });
 
+  // 等所有 fetch 完成后按阅读量排序
+  setTimeout(() => {
+    document.querySelectorAll('.tab-content').forEach(tabContent => {
+      const cards = Array.from(tabContent.children).filter(el => el.classList.contains('card-base') || el.closest('.card-base'));
+      // 获取每张卡片的阅读量
+      const cardData = [];
+      tabContent.querySelectorAll('.post-views[data-slug]').forEach(el => {
+        const card = el.closest('.card-base')?.parentElement || el.closest('.onload-animation');
+        const views = parseInt(el.textContent) || 0;
+        if (card && card.parentElement === tabContent) {
+          cardData.push({ card, views });
+        }
+      });
+      // 按阅读量降序排列
+      cardData.sort((a, b) => b.views - a.views);
+      cardData.forEach(({ card }) => tabContent.appendChild(card));
+    });
+  }, 1500); // 等 fetch 全部完成
+
   // 绑定点赞按钮
   document.querySelectorAll(".post-like-btn[data-slug]").forEach(btn => {
     if (btn.dataset.bound) return;
