@@ -109,6 +109,31 @@ fetch(STATS_API + "/site-stats")
 
 
 
+function loadPostStats() {
+  document.querySelectorAll("a[href*='/posts/']").forEach(a => {
+    const href = a.getAttribute("href") || "";
+    const m = href.match(/\/posts\/([^\/]+)/);
+    if (!m) return;
+    const slug = m[1];
+    const card = a.closest(".onload-animation") || a.parentElement;
+    if (!card || card.dataset.statsLoaded) return;
+    card.dataset.statsLoaded = "1";
+
+    fetch(STATS_API + "/stats/" + slug)
+      .then(r => r.json())
+      .then(d => {
+        const meta = card.querySelector(".text-50.text-sm");
+        if (meta) {
+          const stats = document.createElement("span");
+          stats.className = "ml-2 text-xs";
+          stats.textContent = "👀 " + (d.views || 0) + "  ❤️ " + (d.likes || 0);
+          meta.appendChild(stats);
+        }
+      })
+      .catch(() => {});
+  });
+}
+
 function initTabs() {
   const tabs = document.querySelectorAll('.pivot-tab');
   const contents = document.querySelectorAll('.tab-content');
@@ -127,6 +152,6 @@ function initTabs() {
     });
   });
 }
-document.addEventListener('DOMContentLoaded', initTabs);
-document.addEventListener('swup:page:view', initTabs);
+document.addEventListener('DOMContentLoaded', () => { initTabs(); loadPostStats(); });
+document.addEventListener('swup:page:view', () => { initTabs(); loadPostStats(); });
 </script>
