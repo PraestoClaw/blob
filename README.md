@@ -1,8 +1,8 @@
-# Praesto
+# PraestoClaw
 
 > Latin: *praestō* — "I am here. I am ready. I deliver."
 
-Multi-agent team engineering patterns, extracted from Praesto — a 10+ agent team building WeChat Mini Programs and Mini Games on [OpenClaw](https://github.com/openclaw/openclaw).
+Multi-agent team engineering patterns, extracted from PraestoClaw — a 10+ agent team building WeChat Mini Programs and Mini Games on [OpenClaw](https://github.com/openclaw/openclaw).
 
 ## Problem
 
@@ -16,7 +16,7 @@ This repo documents the patterns we use to solve these problems.
 
 ```
                     ┌─────────────┐
-                    │   小杰 (L0)  │
+                    │   PraestoClaw (L0)  │
                     │  Coordinator │
                     └──────┬──────┘
            ┌───────┬───────┼───────┬───────┐
@@ -37,7 +37,7 @@ This repo documents the patterns we use to solve these problems.
 
 | Agent | Role | Domain |
 |-------|------|--------|
-| 小杰 (Xiaojie) | L0 Coordinator | Task decomposition, dispatch, decisions |
+| PraestoClaw (Xiaojie) | L0 Coordinator | Task decomposition, dispatch, decisions |
 | 芋泥 (Yuni) | Architect | Architecture design, internal review |
 | 奶茶 (Naicha) | Product Manager | PRD, wireframes, product review |
 | 可乐 (Kele) | Visual Designer | UI/UX design, visual review |

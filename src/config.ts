@@ -8,7 +8,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "Praesto",
+	title: "PraestoClaw",
 	subtitle: "Multi-Agent Team Engineering",
 	lang: "zh_CN",
 	themeColor: {
@@ -39,7 +39,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.About,
 		{
 			name: "GitHub",
-			url: "https://github.com/Syndim-Bot/Praesto",
+			url: "https://github.com/PraestoClaw/blob",
 			external: true,
 		},
 	],
@@ -47,13 +47,13 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/demo-avatar.png",
-	name: "Praesto",
+	name: "PraestoClaw",
 	bio: "The hardest part isn't making one agent smart. It's making ten agents work together.",
 	links: [
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/Syndim-Bot/Praesto",
+			url: "https://github.com/PraestoClaw/blob",
 		},
 	],
 };

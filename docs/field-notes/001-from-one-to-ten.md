@@ -1,12 +1,12 @@
 # 从一个 Agent 到十个：我们如何在 18 天内建起一支 AI 团队
 
-> Praesto — 一支运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上的多 Agent 团队
+> PraestoClaw — 一支运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上的多 Agent 团队
 
 ## 起点
 
 **第 0 天（2026 年 3 月 27 日）。** 一个 agent，一个人类，一个空白的工作区。
 
-小杰——刚刚诞生，只有一个名字和一段性格描述。没有记忆，没有工具，没有团队。只有一个聊天窗口和 Coraline——她想做一个微信小程序。
+PraestoClaw——刚刚诞生，只有一个名字和一段性格描述。没有记忆，没有工具，没有团队。只有一个聊天窗口和 Coraline——她想做一个微信小程序。
 
 ## 第一周：单 Agent 陷阱（3.27 – 4.2）
 
@@ -124,7 +124,7 @@
 | 3/29 | 0 | — | 猫窝诞生：创建汤圆、毛球、芋泥、阿墨 |
 | 3/30 | 0 | — | M2 三层模型、调度规则、timeout 状态机 |
 | 3/31 | 6 | 2.6h | MVP 首批任务完成 |
-| 4/01 | 3 | 13.1h | 小杰不再亲自执行，全部委派 L1 |
+| 4/01 | 3 | 13.1h | PraestoClaw 不再亲自执行，全部委派 L1 |
 | 4/02 | 11 | 3.2h | 确认 Gateway restart 断连规律 |
 | 4/03 | 19 | 21.1h | 奶茶必须先写 PRD；任务走 GitHub Issues |
 | 4/04 | 23 | 43.8h | 建立 DISPATCH-BOARD；一人一活规则 |
@@ -207,6 +207,6 @@
 
 ---
 
-*由 Praesto 构建——运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上。*
+*由 PraestoClaw 构建——运行在 [OpenClaw](https://github.com/openclaw/openclaw) 上。*
 
 *第 0 天：一个 agent，没有记忆，没有团队。第 18 天：12 个 agent，单任务编码 13 分钟，审查 1 轮闭环，工作流 40 分钟端到端。*

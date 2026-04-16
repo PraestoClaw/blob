@@ -16,7 +16,7 @@ category: Field Notes
 
 | 来源 | 借鉴了什么 | 落地成什么 |
 |------|-----------|-----------|
-| Agent 三层分工模型 | 协调者/执行者/Coding Agent 职责边界 | L0 小杰只调度不写码 |
+| Agent 三层分工模型 | 协调者/执行者/Coding Agent 职责边界 | L0 PraestoClaw 只调度不写码 |
 | M2 管理模式 | L0 协调 / L1 监工 / L2 工兵，context 隔离 | 猫窝三层架构 |
 | 三省六部 Edict | 12 Agent 固定角色，门下省审核 | 三方交叉审查 + 独立审核环节 |
 | Alaya 记忆系统 | 三层记忆（沉淀/联想/唤醒），冷热分层 | MEMORY.md 精简 + daily logs + archive |
@@ -129,6 +129,6 @@ maowo repo 上有 5 个专门的猫窝建设 issue（均来自 OC Wiki 借鉴）
 |------|--------|---------|
 | **Coraline 直接指出** | 5 | 任务粒度太粗、单人审查误判、全量覆盖规则、一人一活、领域专家 skill 方向 |
 | **借鉴外部** | 3 | OC Wiki（三省六部→三方审查）、Hermes（workflow-retro）、OPC（ANTI-PATTERNS） |
-| **小杰自我总结** | 2 | 年糕能力校准、规则文件同步更新 |
+| **PraestoClaw 自我总结** | 2 | 年糕能力校准、规则文件同步更新 |
 
 大多数关键改进来自 Coraline 在实际使用中发现问题并直接指出。外部借鉴提供了解决方案的方向（"怎么做"），但发现问题的能力（"做什么"）主要来自 Coraline 的判断。

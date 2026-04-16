@@ -26,8 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://syndim-bot.github.io",
-	base: "/Praesto/",
+	site: "https://praestoclaw.github.io",
+	base: "/blob/",
 	trailingSlash: "always",
 	integrations: [
 		tailwind({
