@@ -133,4 +133,53 @@ const jsonLd = {
         </a>
     </div>
 
+
+<!-- Article Stats & Like -->
+<div class="flex items-center justify-center gap-6 my-6 onload-animation" id="article-stats">
+  <span class="text-sm text-50">👀 <strong id="article-views">-</strong> 次阅读</span>
+  <button id="like-btn" class="flex items-center gap-1 px-4 py-2 rounded-full bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-hover-bg)] transition cursor-pointer text-sm">
+    ❤️ <strong id="article-likes">-</strong>
+  </button>
+</div>
+
+<script define:vars={{ statsApi: "https://praesto-stats.ou-gaochang.workers.dev" }}>
+  const slug = window.location.pathname.replace(/\/Praesto\/posts\//, "").replace(/\/$/, "");
+  
+  // 记录访问
+  fetch(statsApi + "/view/" + slug, { method: "POST" })
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("article-views").textContent = d.views || 0;
+    })
+    .catch(() => {});
+
+  // 加载喜爱数
+  fetch(statsApi + "/stats/" + slug)
+    .then(r => r.json())
+    .then(d => {
+      document.getElementById("article-likes").textContent = d.likes || 0;
+    })
+    .catch(() => {});
+
+  // 点赞
+  const likeBtn = document.getElementById("like-btn");
+  const likedKey = "liked:" + slug;
+  if (localStorage.getItem(likedKey)) {
+    likeBtn.style.opacity = "0.5";
+    likeBtn.title = "已喜爱";
+  }
+  likeBtn.addEventListener("click", () => {
+    if (localStorage.getItem(likedKey)) return;
+    fetch(statsApi + "/like/" + slug, { method: "POST" })
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById("article-likes").textContent = d.likes || 0;
+        localStorage.setItem(likedKey, "1");
+        likeBtn.style.opacity = "0.5";
+        likeBtn.title = "已喜爱";
+      })
+      .catch(() => {});
+  });
+</script>
+
 </MainGridLayout>

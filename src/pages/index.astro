@@ -85,9 +85,52 @@ const interval = 50;
       ))}
     </div>
   ))}
+
+  <!-- Site Stats -->
+  <div class="text-center text-sm text-50 mb-4 onload-animation" style="animation-delay: var(--content-delay)" id="site-stats">
+    <span>👀 总访问 <strong id="site-views">-</strong></span>
+    <span class="mx-3">❤️ 总喜爱 <strong id="site-likes">-</strong></span>
+  </div>
 </MainGridLayout>
 
 <script>
+const STATS_API = "https://praesto-stats.ou-gaochang.workers.dev";
+
+// 加载全站统计
+fetch(STATS_API + "/site-stats")
+  .then(r => r.json())
+  .then(d => {
+    const v = document.getElementById("site-views");
+    const l = document.getElementById("site-likes");
+    if (v) v.textContent = d.views || 0;
+    if (l) l.textContent = d.likes || 0;
+  })
+  .catch(() => {});
+
+// 加载每篇文章的统计（通过 PostCard 的链接提取 slug）
+document.querySelectorAll("a[href*='/posts/']").forEach(a => {
+  const href = a.getAttribute("href") || "";
+  const m = href.match(/\/posts\/([^\/]+)/);
+  if (!m) return;
+  const slug = m[1];
+  const card = a.closest(".onload-animation") || a.parentElement;
+  if (!card || card.querySelector(".post-stats")) return;
+
+  fetch(STATS_API + "/stats/" + slug)
+    .then(r => r.json())
+    .then(d => {
+      const badge = document.createElement("div");
+      badge.className = "post-stats text-xs text-50 mt-1 flex gap-3";
+      badge.innerHTML = "👀 " + (d.views || 0) + " · ❤️ " + (d.likes || 0);
+      // 插入到卡片内合适位置
+      const meta = card.querySelector(".text-sm") || card;
+      meta.parentElement.appendChild(badge);
+    })
+    .catch(() => {});
+
+  // 记录访问（只在文章页）
+});
+
 function initTabs() {
   const tabs = document.querySelectorAll('.pivot-tab');
   const contents = document.querySelectorAll('.tab-content');
