@@ -3,7 +3,7 @@ title: GUI 自动化：让 Agent 看到真实像素
 published: 2026-04-15
 description: 代码层审查只能看源码。年糕学会了控制微信开发者工具、截图、自动化操作——给审查加上了渲染层和操作层。
 tags: [GUI, Automation, WeChat, Evidence]
-category: Field Notes
+category: Practice
 ---
 
 > 读代码能告诉你按钮的颜色值是 #FF6B35。截图能告诉你这个按钮在 375px 屏幕上溢出了。点击能告诉你这个按钮点了没反应。

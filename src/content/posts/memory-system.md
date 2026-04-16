@@ -3,7 +3,7 @@ title: 记忆系统：Agent 怎么记住昨天的自己
 published: 2026-04-15
 description: Agent 每次 session 醒来都是失忆的。MEMORY.md + daily logs + archive 三层设计，从 Alaya 和 Hermes 借鉴的记忆架构。
 tags: [Memory, Architecture, Hermes, Alaya]
-category: Field Notes
+category: Practice
 ---
 
 > Agent 每次 session 醒来都是一张白纸。如果你想让它记住昨天做的决定，你必须把记忆写成文件。

@@ -3,7 +3,7 @@ title: Gateway 重启：沉默的任务杀手
 published: 2026-04-15
 description: openclaw gateway restart 会断开所有 subagent。如果你不知道这件事，你会盯着"running"状态等一个已经死了的任务。
 tags: [Incident, Gateway, Recovery, Dispatch]
-category: Field Notes
+category: Practice
 ---
 
 > 最危险的故障不是红色报错，而是一切看起来正常但实际上已经停了。

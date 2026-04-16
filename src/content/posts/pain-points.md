@@ -3,7 +3,7 @@ title: 8 个痛点，8 次跃迁：多 Agent 团队的改进溯源
 published: 2026-04-15
 description: 每个指标变化背后的具体痛点和改进动作。谁发现的问题，谁提供的方案，效果是什么。
 tags: [Pain Points, Improvement, Retrospective, Metrics]
-category: Field Notes
+category: Practice
 ---
 
 > 每一条规则的背后都是一次具体的翻车。这篇文章逐一追溯 8 个关键痛点——谁发现的问题，方案从哪里来，效果怎么样。
