@@ -67,6 +67,18 @@ const jsonLd = {
                         {remarkPluginFrontmatter.minutes} {" " + i18n(remarkPluginFrontmatter.minutes === 1 ? I18nKey.minuteCount : I18nKey.minutesCount)}
                     </div>
                 </div>
+                <div class="flex flex-row items-center" id="meta-views">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:visibility-outline-rounded"></Icon>
+                    </div>
+                    <div class="text-sm" id="meta-views-count">-</div>
+                </div>
+                <div class="flex flex-row items-center cursor-pointer" id="meta-likes">
+                    <div class="transition h-6 w-6 rounded-md bg-black/5 dark:bg-white/10 text-black/50 dark:text-white/50 flex items-center justify-center mr-2">
+                        <Icon name="material-symbols:favorite-outline-rounded"></Icon>
+                    </div>
+                    <div class="text-sm" id="meta-likes-count">-</div>
+                </div>
             </div>
 
             <!-- title -->
@@ -134,13 +146,6 @@ const jsonLd = {
     </div>
 
 
-<!-- Article Stats & Like -->
-<div class="flex items-center justify-center gap-6 my-6 onload-animation" id="article-stats">
-  <span class="text-sm text-50">👀 <strong id="article-views">-</strong> 次阅读</span>
-  <button id="like-btn" class="flex items-center gap-1 px-4 py-2 rounded-full bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-hover-bg)] transition cursor-pointer text-sm">
-    ❤️ <strong id="article-likes">-</strong>
-  </button>
-</div>
 
 <script define:vars={{ statsApi: "https://praesto-stats.ou-gaochang.workers.dev" }}>
   const slug = window.location.pathname.replace(/\/Praesto\/posts\//, "").replace(/\/$/, "");
@@ -149,7 +154,8 @@ const jsonLd = {
   fetch(statsApi + "/view/" + slug, { method: "POST" })
     .then(r => r.json())
     .then(d => {
-      document.getElementById("article-views").textContent = d.views || 0;
+      const el = document.getElementById("meta-views-count");
+      if (el) el.textContent = d.views || 0;
     })
     .catch(() => {});
 
@@ -157,29 +163,33 @@ const jsonLd = {
   fetch(statsApi + "/stats/" + slug)
     .then(r => r.json())
     .then(d => {
-      document.getElementById("article-likes").textContent = d.likes || 0;
+      const el = document.getElementById("meta-likes-count");
+      if (el) el.textContent = d.likes || 0;
     })
     .catch(() => {});
 
   // 点赞
-  const likeBtn = document.getElementById("like-btn");
+  const metaLikes = document.getElementById("meta-likes");
   const likedKey = "liked:" + slug;
-  if (localStorage.getItem(likedKey)) {
-    likeBtn.style.opacity = "0.5";
-    likeBtn.title = "已喜爱";
+  if (metaLikes) {
+    if (localStorage.getItem(likedKey)) {
+      metaLikes.style.opacity = "0.5";
+      metaLikes.title = "已喜爱";
+    }
+    metaLikes.addEventListener("click", () => {
+      if (localStorage.getItem(likedKey)) return;
+      fetch(statsApi + "/like/" + slug, { method: "POST" })
+        .then(r => r.json())
+        .then(res => {
+          const el = document.getElementById("meta-likes-count");
+          if (el) el.textContent = res.likes;
+          localStorage.setItem(likedKey, "1");
+          metaLikes.style.opacity = "0.5";
+          metaLikes.title = "已喜爱";
+        })
+        .catch(() => {});
+    });
   }
-  likeBtn.addEventListener("click", () => {
-    if (localStorage.getItem(likedKey)) return;
-    fetch(statsApi + "/like/" + slug, { method: "POST" })
-      .then(r => r.json())
-      .then(d => {
-        document.getElementById("article-likes").textContent = d.likes || 0;
-        localStorage.setItem(likedKey, "1");
-        likeBtn.style.opacity = "0.5";
-        likeBtn.title = "已喜爱";
-      })
-      .catch(() => {});
-  });
 </script>
 
 </MainGridLayout>
