@@ -1,48 +1,77 @@
 ---
+import { getPostUrlBySlug } from "@utils/url-utils";
 import PostCard from "../components/PostCard.astro";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
-import { getPostUrlBySlug } from "@utils/url-utils";
 import { getSortedPosts } from "../utils/content-utils";
 
 const allPosts = await getSortedPosts();
 
 // 按 category 自动分组，不再硬编码 slug
-const categoryMap: Record<string, { label: string; icon: string; order: number }> = {
-  "Field Notes": { label: "方法论", icon: "🔥", order: 1 },
-  "Practice": { label: "实战笔记", icon: "📝", order: 4 },
-  "Workflow": { label: "工作流与技能", icon: "🎓", order: 3 },
-  "Quality": { label: "工程体系", icon: "⚙️", order: 2 },
-  "Dispatch": { label: "工程体系", icon: "⚙️", order: 2 },
-  "Skills": { label: "工作流与技能", icon: "🎓", order: 3 },
-  "Automation": { label: "工作流与技能", icon: "🎓", order: 3 },
+const categoryMap: Record<
+	string,
+	{ label: string; icon: string; order: number }
+> = {
+	"Field Notes": { label: "方法论", icon: "🔥", order: 1 },
+	Practice: { label: "实战笔记", icon: "📝", order: 4 },
+	Workflow: { label: "工作流与技能", icon: "🎓", order: 3 },
+	Quality: { label: "工程体系", icon: "⚙️", order: 2 },
+	Dispatch: { label: "工程体系", icon: "⚙️", order: 2 },
+	Skills: { label: "工作流与技能", icon: "🎓", order: 3 },
+	Automation: { label: "工作流与技能", icon: "🎓", order: 3 },
 };
 
 // 按 tab 分组
-const tabGroups: Record<string, { label: string; icon: string; posts: any[] }> = {};
+const tabGroups: Record<string, { label: string; icon: string; posts: any[] }> =
+	{};
 
 allPosts.forEach((post: any) => {
-  const cat = post.data.category || "其他";
-  const mapped = categoryMap[cat] || { label: "📦 其他", icon: "📦", order: 99 };
-  const key = mapped.label;
-  if (!tabGroups[key]) {
-    tabGroups[key] = { label: mapped.label, icon: mapped.icon, posts: [] };
-  }
-  tabGroups[key].posts.push(post);
+	const cat = post.data.category || "其他";
+	const mapped = categoryMap[cat] || {
+		label: "📦 其他",
+		icon: "📦",
+		order: 99,
+	};
+	const key = mapped.label;
+	if (!tabGroups[key]) {
+		tabGroups[key] = { label: mapped.label, icon: mapped.icon, posts: [] };
+	}
+	tabGroups[key].posts.push(post);
 });
 
 // 固定顺序
 const tabs = [
-  { id: "practice", ...tabGroups["实战笔记"] || { label: "实战笔记", icon: "📝", posts: [] } },
-  { id: "methodology", ...tabGroups["方法论"] || { label: "方法论", icon: "🔥", posts: [] } },
-  { id: "engineering", ...tabGroups["工程体系"] || { label: "工程体系", icon: "⚙️", posts: [] } },
-  { id: "reusable", ...tabGroups["工作流与技能"] || { label: "工作流与技能", icon: "🎓", posts: [] } },
+	{
+		id: "practice",
+		...(tabGroups["实战笔记"] || { label: "实战笔记", icon: "📝", posts: [] }),
+	},
+	{
+		id: "methodology",
+		...(tabGroups["方法论"] || { label: "方法论", icon: "🔥", posts: [] }),
+	},
+	{
+		id: "engineering",
+		...(tabGroups["工程体系"] || { label: "工程体系", icon: "⚙️", posts: [] }),
+	},
+	{
+		id: "reusable",
+		...(tabGroups["工作流与技能"] || {
+			label: "工作流与技能",
+			icon: "🎓",
+			posts: [],
+		}),
+	},
 ];
 
 // 如果有其他分类
 Object.entries(tabGroups).forEach(([key, val]) => {
-  if (key !== "方法论" && key !== "实战笔记" && key !== "工程体系" && key !== "工作流与技能") {
-    tabs.push({ id: key, ...val });
-  }
+	if (
+		key !== "方法论" &&
+		key !== "实战笔记" &&
+		key !== "工程体系" &&
+		key !== "工作流与技能"
+	) {
+		tabs.push({ id: key, ...val });
+	}
 });
 
 let delay = 0;
